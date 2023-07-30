@@ -1,0 +1,41 @@
+{% extends "core/base_core.html" %}
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>{{ member.first_name }} {{ member.last_name }}'s Profile</h2>
+                    {% if member.is_staff %}
+                        <span class="badge badge-primary">Staff Member</span>
+                    {% else %}
+                        <span class="badge badge-secondary">Regular Member</span>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Contact Information</h5>
+                            <p><strong>Email:</strong> {{ member.email }}</p>
+                            <p><strong>Telephone:</strong> {{ member.telephone }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Membership Details</h5>
+                            <p><strong>Join Date:</strong> {{ member.join_date }}</p>
+                            <p><strong>Subscription Ends:</strong> {{ member.subscription_ends }}</p>
+                            <p><strong>Social ID:</strong> {{ member.social_id }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                            <a href="#" class="btn btn-success">Renew Subscription</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
